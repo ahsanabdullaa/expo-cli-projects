@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, TextInput, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 export default function AddTodo({ handleAdd }) {
@@ -7,17 +7,20 @@ export default function AddTodo({ handleAdd }) {
   const inputHandler = (val) => {
     setText(val);
   };
+
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.input}
         placeholder="Add new task"
+        value={text}
         onChangeText={inputHandler}
         clearButtonMode="always"
       />
       <TouchableOpacity
         onPress={() => {
           handleAdd(text);
+          setText("");
         }}
         style={{ backgroundColor: "#7d3980" }}
       >
